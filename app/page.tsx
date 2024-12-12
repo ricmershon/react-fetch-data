@@ -47,6 +47,7 @@ export default function Home() {
     const fetchData = useCallback(async () => {
         setIsLoading(true);
 
+        // Add a delay to show loading spinner.
         await new Promise((resolve) => setTimeout(resolve, 2000));
 
         try {
@@ -55,7 +56,7 @@ export default function Home() {
                 throw new Error("Failed to fetch data");
             }
             const result = await response.json();
-            setData(result.slice(0, 5));
+            setData(result.slice(0, 5));    // Just the first 5 records
         } catch (error) {
             setError(error);
         } finally {
